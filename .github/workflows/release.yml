@@ -20,22 +20,22 @@ jobs:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
             artifact_name: litterbox-rust-upload
-            asset_name: litterbox-rust-upload-linux-amd64
+            asset_name: litterbox-rust-upload-${{ github.event.inputs.version }}-linux-amd64
 
           - os: macos-latest
             target: x86_64-apple-darwin
             artifact_name: litterbox-rust-upload
-            asset_name: litterbox-rust-upload-macos-amd64
+            asset_name: litterbox-rust-upload-${{ github.event.inputs.version }}-macos-amd64
 
           - os: macos-latest
             target: aarch64-apple-darwin
             artifact_name: litterbox-rust-upload
-            asset_name: litterbox-rust-upload-macos-arm64
+            asset_name: litterbox-rust-upload-${{ github.event.inputs.version }}-macos-arm64
 
           - os: windows-latest
             target: x86_64-pc-windows-msvc
             artifact_name: litterbox-rust-upload.exe
-            asset_name: litterbox-rust-upload-windows-amd64.exe
+            asset_name: litterbox-rust-upload-${{ github.event.inputs.version }}-windows-amd64.exe
 
     steps:
       - uses: actions/checkout@v3
