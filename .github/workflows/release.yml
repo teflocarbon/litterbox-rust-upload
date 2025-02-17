@@ -63,5 +63,5 @@ jobs:
       - name: Upload Release Asset
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: release
+          tag_name: ${{ github.event.inputs.version }}
           files: ${{ matrix.asset_name }}
