@@ -2,10 +2,12 @@
 name = "litterbox-rust-upload"
 version = "0.1.0"
 edition = "2021"
+authors = ["Teflo"]
+description = "A file uploader for litterbox.catbox.moe"
 
 [dependencies]
 tokio = { version = "1.36", features = ["full"] }
-reqwest = { version = "0.11", features = ["multipart"] }
+reqwest = { version = "0.11", features = ["multipart", "stream"] }
 indicatif = "0.17"
 humansize = "2.1"
 tokio-util = { version = "0.7", features = ["io"] }

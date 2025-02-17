@@ -6,6 +6,8 @@ use indicatif::{ProgressBar, ProgressStyle};
 use humansize::{format_size, BINARY};
 use std::time::Instant;
 
+const MAX_FILE_SIZE: u64 = 1024 * 1024 * 1024; // 1GB in bytes
+
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let file_path = std::env::args()
@@ -14,6 +16,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     
     let file = File::open(&file_path).await?;
     let file_size = file.metadata().await?.len();
+    
+    if file_size > MAX_FILE_SIZE {
+        return Err("File size exceeds 1GB limit".into());
+    }
     
     let pb = ProgressBar::new(file_size);
     pb.set_style(ProgressStyle::default_bar()
